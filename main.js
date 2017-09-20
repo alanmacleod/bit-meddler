@@ -1,27 +1,22 @@
 
 
-const MASK = 0x60; // 7-bit, 128 vals
+// Magic XOR number for 7-bit. 128 vals
+const MASK = 0x60;
 
-let seq = 1;
-let i = seq;
-let limiter=0;
+// Initial value
+let seq = i = 1;
+let arr = [0];
 
-let arr = new Array(128);
-
-for(;;)
+do
 {
+
   arr[seq] = 1;
+  seq = (seq & 1) ? seq = (seq >> 1) ^ MASK : seq >>= 1
 
-  if (seq & 1)
-    seq = (seq >> 1) ^ MASK;
-  else
-    seq >>=1;
+} while (seq != i);
 
-  if (seq == i)
-    break;
 
-}
-
+// Test output
 let s = "";
 for(let e of arr)
   s+=`${e} `;
