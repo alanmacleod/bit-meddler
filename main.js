@@ -22,7 +22,7 @@ const MASKS3 = [
   0x12BA74D,0x36CD5A7,0x4E5D793,0xF5CDE95,0x1A4E6FF2,0x29D1E9EB,0x7A5BC2E3,0xB4BCD35C
 ];
 
-let bits = 9;
+let bits = 3;
 
 const MASK = MASKS3[bits - 2];
 
