@@ -2,48 +2,60 @@
 
 // Magic XOR number for 7-bit. 128 vals
 // const MASK = [];
-const MASK = 0x60;
-
-const MASKS = [ 0x0110, 0x0240, 0x0500, 0x0CA0,
-            0x1B00, 0x3500, 0x6000, 0xB400 ];
-
-const MASKS2 = [ 0x03,0x06,0x0C,0x14,0x30,0x60,0xB8,
-                 0x11,0x24,0x50,0xCA,0x1B,0x35,0x60,0xB4,
-                 0x12,0x20,0x72,0x90,0x14,0x30,0x40,0xD8,
-                 0x12,0x2
-
-
-              ];
-
+// const MASK = 0x60;
 //
-// // Initial value
-// let seq = i = 1;
-// let arr = [0];
+// const MASKS = [ 0x0110, 0x0240, 0x0500, 0x0CA0,
+//             0x1B00, 0x3500, 0x6000, 0xB400 ];
 //
-// do
-// {
-//
-//   arr[seq] = 1;
-//   seq = (seq & 1) ? seq = (seq >> 1) ^ MASK : seq >>= 1
-//
-// } while (seq != i);
+// const MASKS2 = [ 0x03,0x06,0x0C,0x14,0x30,0x60,0xB8,
+//                  0x11,0x24,0x50,0xCA,0x1B,0x35,0x60,0xB4,
+//                  0x12,0x20,0x72,0x90,0x14,0x30,0x40,0xD8,
+//                  0x12,0x2
 //
 //
-// // Test output
-// let s = "";
-// for(let e of arr)
-//   s+=`${e} `;
-//
+//               ];
 
+const MASKS3 = [
+  0x3,0x5,0x9,0x1D,0x36,0x69,0xA6, // 2 to 8
+  0x17C,0x32D,0x4F2,0xD34,0x1349,0x2532,0x6699,0xD295,
+  0x12933,0x2C93E,0x593CA,0xAFF95,0x12B6BC,0x2E652E,0x5373D6,0x9CCDAE,
+  0x12BA74D,0x36CD5A7,0x4E5D793,0xF5CDE95,0x1A4E6FF2,0x29D1E9EB,0x7A5BC2E3,0xB4BCD35C
+];
 
-for (let i=0; i<MASKS2.length; i++)
+let bits = 9;
+
+const MASK = MASKS3[bits - 2];
+
+// Initial value
+let seq = i = 1;
+let arr = [0];
+
+do
 {
-  let m = msb(MASKS2[i]);
-  console.log(
-    MASKS2[i] << (i - m + 1)
-  );
+  arr[seq] = arr[seq] == undefined ? arr[seq] = 1 : arr[seq]++;
+  seq = (seq & 1) ? seq = (seq >> 1) ^ MASK : seq >>= 1
 
-}
+  console.log(seq);
+
+} while (seq != i);
+
+
+// Test output
+let s = "";
+for(let e of arr)
+  s+=`${e} `;
+
+console.log(s);
+
+
+// for (let i=0; i<MASKS2.length; i++)
+// {
+//   let m = msb(MASKS2[i]);
+//   console.log(
+//     MASKS2[i] << (i - m + 1)
+//   );
+//
+// }
 
 function msb(v)
 {
