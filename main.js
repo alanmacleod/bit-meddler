@@ -6,7 +6,6 @@ module.exports = bitmeddler;
 
 function bitmeddler(maximum, seed)
 {
-
   this.ITSAKINDOFMAGIC = [
     0x3,0x6,0x9,0x1D,0x36,0x69,0xA6, // 2 to 8
     0x17C,0x32D,0x4F2,0xD34,0x1349,0x2532,0x6699,0xD295, // 9 - 16
@@ -15,12 +14,12 @@ function bitmeddler(maximum, seed)
   ];
 
   this.maximum = maximum;
-  this.start = Math.min(seed || 1, maximum-2);
+  this.start = (seed || 1) % maximum;
   this.cur = this.start;
   this.MASK = this.ITSAKINDOFMAGIC[ this._msb( this.maximum ) - 2 ];
   this.done = false;
-
 }
+
 
 bitmeddler.prototype = {
 
@@ -41,8 +40,8 @@ bitmeddler.prototype = {
 
   _msb: function(v)
   {
-    let r=0;
-    while (v >>= 1) r++;
+    let r = 0;
+    while (v) { v >>=1; r++; }
     return r;
   },
 
@@ -53,8 +52,7 @@ bitmeddler.prototype = {
 
 };
 
-let test = new bitmeddler(1000, 1);
-
+let test = new bitmeddler(1000);
 
 do {
 
