@@ -1,11 +1,13 @@
 
+
 'use strict';
 
-module.exports = meddler;
+module.exports = bitmeddler;
 
-function meddler(maximum, start)
+function bitmeddler(maximum, seed)
 {
-  this.MASKS = [
+
+  this.ITSAKINDOFMAGIC = [
     0x3,0x6,0x9,0x1D,0x36,0x69,0xA6, // 2 to 8
     0x17C,0x32D,0x4F2,0xD34,0x1349,0x2532,0x6699,0xD295, // 9 - 16
     0x12933,0x2C93E,0x593CA,0xAFF95,0x12B6BC,0x2E652E,0x5373D6,0x9CCDAE, // etc
@@ -13,22 +15,28 @@ function meddler(maximum, start)
   ];
 
   this.maximum = maximum;
-  this.start = start || 1;
+  this.start = Math.min(seed || 1, maximum-2);
   this.cur = this.start;
-  this.MASK = this.MASKS[ this._msb( this.maximum ) - 2 ];
+  this.MASK = this.ITSAKINDOFMAGIC[ this._msb( this.maximum ) - 2 ];
+  this.done = false;
+
 }
 
-
-meddler.prototype = {
+bitmeddler.prototype = {
 
   next: function()
   {
-    this.cur = (this.cur & 1) ? this.cur = (this.cur >> 1) ^ this.MASK :
-                                this.cur >>= 1;
-    if ( this.cur == this.start )
+    if (this.done)
       return null;
-    else
-      return this.cur;
+
+    do {
+      this.cur = (this.cur & 1) ? this.cur = (this.cur >> 1) ^ this.MASK :
+                                  this.cur >>= 1;
+    } while( !this._ok( this.cur ) );
+
+    this.done = ( this.cur == this.start );
+
+    return this.cur;
   },
 
   _msb: function(v)
@@ -36,56 +44,21 @@ meddler.prototype = {
     let r=0;
     while (v >>= 1) r++;
     return r;
+  },
+
+  _ok: function(v)
+  {
+    return (v >= 1 && v <= this.maximum);
   }
 
 };
 
-
-let test = new meddler(255);
+let test = new bitmeddler(1000, 1);
 
 
 do {
+
   var r = test.next();
   console.log(r);
-} while (r != null);
 
-//
-// process.exit();
-//
-// const MASKS3 = [
-// ];
-//
-// let bits = 16;
-//
-// const MASK = MASKS3[bits - 2];
-//
-// // Initial value
-// let seq = i = 1;
-// let arr = [0];
-//
-// do
-// {
-//   arr[seq] = arr[seq] == undefined ? arr[seq] = 1 : arr[seq]++;
-//   seq = (seq & 1) ? seq = (seq >> 1) ^ MASK : seq >>= 1
-//
-//   console.log(seq);
-//
-// } while (seq != i);
-//
-//
-// // Test output
-// let s = "";
-// for(let e of arr)
-//   s+=`${e} `;
-//
-// console.log(s);
-//
-//
-// // for (let i=0; i<MASKS2.length; i++)
-// // {
-// //   let m = msb(MASKS2[i]);
-// //   console.log(
-// //     MASKS2[i] << (i - m + 1)
-// //   );
-// //
-// // }
+} while (r != null);
