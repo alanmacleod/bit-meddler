@@ -4,6 +4,8 @@
 
 module.exports = bitmeddler;
 
+var UINT_MAX = 2147483647;
+
 function bitmeddler(maximum, seed)
 {
   this.ITSAKINDOFMAGIC = [
@@ -12,6 +14,9 @@ function bitmeddler(maximum, seed)
     0x12933,0x2C93E,0x593CA,0xAFF95,0x12B6BC,0x2E652E,0x5373D6,0x9CCDAE, // etc
     0x12BA74D,0x36CD5A7,0x4E5D793,0xF5CDE95,0x1A4E6FF2,0x29D1E9EB,0x7A5BC2E3,0xB4BCD35C
   ];
+
+  if (maximum < 2 || maximum > 2147483647)
+    throw "`maximum` must be betwen 2 and 2,147,483,647 inclusive";
 
   this.maximum = maximum;
   this.start = (seed || 1) % maximum;
@@ -52,7 +57,7 @@ bitmeddler.prototype = {
 
 };
 
-let test = new bitmeddler(1000);
+let test = new bitmeddler(2147483647);
 
 do {
 
