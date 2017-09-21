@@ -16,7 +16,7 @@ var ITSAKINDOFMAGIC = [
 function bitmeddler(maximum, seed)
 {
   if (maximum < 2 || maximum > 2147483647)
-    throw "`maximum` must be betwen 2 and 2,147,483,647 inclusive";
+    throw "`maximum` must be between 2 and 2,147,483,647 inclusive";
 
   this.maximum = maximum;
   this.start = (seed || 1) % maximum;
@@ -41,6 +41,12 @@ bitmeddler.prototype = {
     this.done = ( this.cur == this.start );
 
     return this.cur;
+  },
+
+  reset: function()
+  {
+    this.done = false;
+    this.cur = this.start;
   },
 
   _msb: function(v)
