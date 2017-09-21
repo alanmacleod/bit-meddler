@@ -1,0 +1,22 @@
+{
+  "name": "bit-meddler",
+  "version": "0.1.0",
+  "description": "Fast scrambled, pseudorandom, numbers in a given range touching each value only once without using a flags array or random number generator",
+  "main": "main.js",
+  "scripts": {
+    "test": "ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alanmacleod/bit-meddler.git"
+  },
+  "author": "Alan MacLeod",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alanmacleod/bit-meddler/issues"
+  },
+  "homepage": "https://github.com/alanmacleod/bit-meddler#readme",
+  "devDependencies": {
+    "ava": "^0.22.0"
+  }
+}
