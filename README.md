@@ -1,6 +1,6 @@
 # bit-meddler
 
-If Bette Midler ever needed a lightweight way of scrambling a range of numbers without resorting to a random number generator or an array, oh boy, she would surely:
+If Bette Midler ever needed a lightweight method to scramble a range of numbers without resorting to a random number generator or an array, oh boy, she would _surely_:
 
 ```
 npm install --save bit-meddler
