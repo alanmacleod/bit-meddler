@@ -2,7 +2,7 @@
 
 module.exports = bitmeddler;
 
-var UINT_MAX = 2147483647;
+var INT_MAX = 2147483647;
 
 var ITSAKINDOFMAGIC = [
   0x3,0x6,0x9,0x1D,0x36,0x69,0xA6, // 2 to 8
@@ -13,8 +13,8 @@ var ITSAKINDOFMAGIC = [
 
 function bitmeddler(maximum, seed)
 {
-  if (maximum < 2 || maximum > 2147483647)
-    throw "`maximum` must be between 2 and 2,147,483,647 inclusive";
+  if (maximum < 2 || maximum > INT_MAX)
+    throw "`maximum` must be between 2 and " + INT_MAX + " inclusive";
 
   this.maximum = maximum;
   this.start = (seed || 1) % maximum;

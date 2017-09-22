@@ -116,5 +116,4 @@ test('reset', t => {
   for (let i of arr)
     t.is(i, 1);
 
-
 });
