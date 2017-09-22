@@ -25,4 +25,11 @@ meddle.next(); // give me a number!
 
 Calling `.next()` will return every number between `1` and `1000` in a scrambled, pseudorandom order. The method will return a `null` once every number has been returned. You can then call `.reset()` to start again if you wish.
 
-It's not "very random" but produces a passable simulation if speed and low memory usage are amongst your requirements. It uses a linear feedback shift register design adapted for software. I remember writing games as a kid on bait hardware bending my brain trying to think of a way to do this without an array. So thanks to this book [Game Engine Black Book: Wolfenstein 3D](http://fabiensanglard.net/Game_Engine_Black_Book_Release_Date/index.php) for finally revealing the method to me years later. And also [this website was handy](https://www.maximintegrated.com/en/app-notes/index.mvp/id/4400).
+An optional second parameter is a seed number to vary the order:
+
+```js
+let seed = 42;
+let meddle = new bitmeddler(1000, seed);
+```
+
+So it's not "very random" but produces a passable simulation if speed and low memory usage are amongst your requirements. It uses a linear feedback shift register design adapted for software. I remember writing games as a kid on bait hardware bending my brain trying to think of a way to do this without an array. So thanks to this book [Game Engine Black Book: Wolfenstein 3D](http://fabiensanglard.net/Game_Engine_Black_Book_Release_Date/index.php) for finally revealing the method to me years later. And also [this website was handy](https://www.maximintegrated.com/en/app-notes/index.mvp/id/4400).
