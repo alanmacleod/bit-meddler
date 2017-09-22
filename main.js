@@ -61,11 +61,11 @@ bitmeddler.prototype = {
 
 };
 
-let test = new bitmeddler(2147483647);
-
-do {
-
-  var r = test.next();
-  console.log(r);
-
-} while (r != null);
+// let test = new bitmeddler(2147483647);
+//
+// do {
+//
+//   var r = test.next();
+//   console.log(r);
+//
+// } while (r != null);
