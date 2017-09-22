@@ -1,4 +1,4 @@
-
+[![Build Status](https://travis-ci.org/alanmacleod/bit-meddler.svg?branch=master)](https://travis-ci.org/alanmacleod/bit-meddler)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # bit-meddler
