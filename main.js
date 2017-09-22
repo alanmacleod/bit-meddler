@@ -23,7 +23,6 @@ function bitmeddler(maximum, seed)
   this.done = false;
 }
 
-
 bitmeddler.prototype = {
 
   next: function()
@@ -60,12 +59,3 @@ bitmeddler.prototype = {
   }
 
 };
-
-// let test = new bitmeddler(2147483647);
-//
-// do {
-//
-//   var r = test.next();
-//   console.log(r);
-//
-// } while (r != null);

@@ -84,3 +84,37 @@ test('touch all numbers once (2)', t => {
     t.is(i, 1);
 
 });
+
+
+
+test('reset', t => {
+
+  let m = new bitmeddler(5000);
+  let arr = [1];
+
+  for(;;)
+  {
+    let n = m.next();
+    if (n == null) break;
+    arr[n] = (arr[n] == undefined) ? 1 : arr[n] + 1;
+  }
+
+  for (let i of arr)
+    t.is(i, 1);
+
+  m.reset();
+
+  arr = [1]; // reset array
+
+  for(;;)
+  {
+    let n = m.next();
+    if (n == null) break;
+    arr[n] = (arr[n] == undefined) ? 1 : arr[n] + 1;
+  }
+
+  for (let i of arr)
+    t.is(i, 1);
+
+
+});
