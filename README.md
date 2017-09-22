@@ -5,7 +5,7 @@
 
 Returns randomish integers in a given range.
 
-The practical use of this package doesn't reveal itself until you go for stupid big-ass numbers. Like `500,000,000` which would take a relatively long time and waste a ton of memory to iterate through and return each integer only once using Math.random() and a flags array.
+The practical use of this package doesn't reveal itself until you go for stupid big-ass numbers. Like `100,000` which would take a relatively long time and waste a ton of memory to iterate through and return each integer only once using Math.random() and a flags array.
 
 If Bette Midler ever needed a lightweight method to scramble a range of numbers without resorting to a random number generator or an array, oh boy, she would surely:
 
