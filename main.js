@@ -33,10 +33,9 @@ bitmeddler.prototype = {
     do {
       this.cur = (this.cur & 1) ? this.cur = (this.cur >> 1) ^ this.MASK :
                                   this.cur >>= 1;
-    } while( !this._ok( this.cur ) );
+    } while( this.cur > this.maximum );
 
     this.done = ( this.cur == this.start );
-
     return this.cur;
   },
 
@@ -51,11 +50,6 @@ bitmeddler.prototype = {
     let r = 0;
     while (v) { v >>=1; r++; }
     return r;
-  },
-
-  _ok: function(v)
-  {
-    return (v >= 1 && v <= this.maximum);
   }
 
 };
