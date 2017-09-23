@@ -24,6 +24,21 @@ test('input range (2)', t => {
 });
 
 
+test('output range', t => {
+
+  let max = 10000;
+  let m = new bitmeddler(max);
+
+  for (;;)
+  {
+    let v = m.next();
+    if (v == null) break;
+    t.true(v <= max && v > 0);
+  }
+
+});
+
+
 // Should return NULL after all numbers in range have been returned
 test('completion signal', t => {
 
