@@ -10,6 +10,8 @@ var bmed = new bitmeddler(range);
 var naive_ary = [];
 var naive_i = 1;
 var naive_next, naive_rand;
+var naive_size = range;
+while (naive_size >= naive_i) naive_ary.push(naive_i++);
 
 
 function bm(bm_size)
@@ -21,7 +23,7 @@ function bm(bm_size)
 
 function naive(naive_size)
 {
-  while (naive_size >= naive_i) naive_ary.push(naive_i++);
+
   while (naive_size--)
   {
       naive_rand = Math.floor(Math.random() * naive_ary.length);
