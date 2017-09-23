@@ -47,7 +47,7 @@ bitmeddler.prototype = {
 
   _msb: function(v)
   {
-    let r = 0;
+    var r = 0;
     while (v) { v >>=1; r++; }
     return r;
   }
