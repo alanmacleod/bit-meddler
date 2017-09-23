@@ -1,32 +1,38 @@
 var bitmeddler = require('./main')
 
-function bm(size)
-{
-    var bm = new bitmeddler(size);
-    var next;
 
-    while (next) next = bm.next();
+var range = process.argv[2] || 10000;
+
+// bitmeddler setup
+var bmed = new bitmeddler(range);
+
+// naive setup
+var naive_ary = [];
+var naive_i = 1;
+var naive_next, naive_rand;
+
+
+function bm(bm_size)
+{
+    var bm_next;
+    while (bm_next) bm_next = bmed.next();
 }
 
-function naive(size)
+
+function naive(naive_size)
 {
-    var ary = [];
-    var i = 1;
-    var next, rand;
-
-    while (size >= i) ary.push(i++);
-
-    while (size--)
-    {
-        rand = Math.floor(Math.random() * ary.length);
-        next = ary.splice(rand, 1)[0];
-    }
+  while (naive_size >= naive_i) naive_ary.push(naive_i++);
+  while (naive_size--)
+  {
+      naive_rand = Math.floor(Math.random() * naive_ary.length);
+      naive_next = naive_ary.splice(naive_rand, 1)[0];
+  }
 }
 
 console.time('bm');
-bm(10000);
+bm(range);
 console.timeEnd('bm');
 
 console.time('naive');
-naive(10000);
+naive(range);
 console.timeEnd('naive');
