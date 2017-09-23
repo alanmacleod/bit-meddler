@@ -1,6 +1,6 @@
 {
   "name": "bit-meddler",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Fast scrambled, pseudorandom, numbers in a given range touching each value only once without using a flags array or random number generator. Uses a linear feedback shift register.",
   "main": "main.js",
   "scripts": {
