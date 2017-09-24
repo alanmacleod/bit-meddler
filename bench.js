@@ -16,8 +16,9 @@ while (naive_size >= naive_i) naive_ary.push(naive_i++);
 
 function bm(bm_size)
 {
-    var bm_next;
-    while (bm_next) bm_next = bmed.next();
+    var bm_next = 1;
+    while (bm_next)
+      bm_next = bmed.next();
 }
 
 
