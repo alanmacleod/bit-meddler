@@ -20,28 +20,32 @@ function bitmeddler(maximum, seed)
   this.start = (seed || 1) % maximum;
   this.cur = this.start;
   this.MASK = ITSAKINDOFMAGIC[ this._msb( this.maximum ) - 2 ];
-  this.done = false;
+  this.next = this._next;
 }
 
 bitmeddler.prototype = {
 
-  next: function()
+  _next: function()
   {
-    if (this.done)
-      return null;
-
     do {
       this.cur = (this.cur & 1) ? this.cur = (this.cur >> 1) ^ this.MASK :
                                   this.cur >>= 1;
     } while( this.cur > this.maximum );
 
-    this.done = ( this.cur == this.start );
+    if ( this.cur === this.start )
+      this.next = this._done;
+
     return this.cur;
+  },
+
+  _done: function()
+  {
+    return null;
   },
 
   reset: function()
   {
-    this.done = false;
+    this.next = this._next;
     this.cur = this.start;
   },
 
