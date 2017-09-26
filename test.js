@@ -3,6 +3,19 @@ import test from 'ava';
 
 let bitmeddler = require('./main');
 
+test('all', t => {
+  let l = 1000;
+  let m = new bitmeddler(l);
+  let a = m.all();
+
+  // Should have exactly `l` (1000) elements
+  t.is(a.length, l);
+
+  // Check they're in range (slightly redundant, as tested elsewhere)
+  for(let e of a)
+    t.true( e >= 1 && e <= l);
+});
+
 test('input range (1)', t => {
   try {
     let m = new bitmeddler(-1);
