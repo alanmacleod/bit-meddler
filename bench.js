@@ -1,6 +1,5 @@
 var bitmeddler = require('./main')
 
-
 var range = process.argv[2] || 10000;
 
 // bitmeddler setup
@@ -13,14 +12,12 @@ var naive_next, naive_rand;
 var naive_size = range;
 while (naive_size >= naive_i) naive_ary.push(naive_i++);
 
-
 function bm(bm_size)
 {
     var bm_next = 1;
     while (bm_next)
       bm_next = bmed.next();
 }
-
 
 function naive(naive_size)
 {
