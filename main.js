@@ -49,6 +49,15 @@ bitmeddler.prototype = {
     this.cur = this.start;
   },
 
+  all: function()
+  {
+    this.reset();
+    var o = [], v;
+    while(v = this.next())
+      o.push(v);
+    return o;
+  },
+
   _msb: function(v)
   {
     var r = 0;
