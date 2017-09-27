@@ -7,6 +7,10 @@ Returns randomish integers in a given range.
 
 The practical use of this package doesn't reveal itself until you go for stupid big-ass numbers. Like `100,000` which would take a relatively long time and waste a ton of memory to iterate through and return each integer only once using Math.random() and a flags array.
 
+[Watch a live demo here](https://demos.alanmacleod.eu/bit-meddler/pub/)
+
+![demo](https://raw.githubusercontent.com/alanmacleod/bit-meddler/master/demo/img/demo.png)
+
 If Bette Midler ever needed a lightweight method to scramble a range of numbers without resorting to a random number generator or an array, oh boy, she would surely:
 
 ```
